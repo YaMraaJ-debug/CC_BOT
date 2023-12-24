@@ -29,7 +29,7 @@ async def main():
     msg = message.text[len('/scr '):]
     splitter = msg.split(' ')
     if len(msg) == 0:
-      resp = f"""
+      resp = """
 𝗪𝗿𝗼𝗻𝗴 𝗙𝗼𝗿𝗺𝗮𝘁 ❌
 
 𝗨𝘀𝗮𝗴𝗲:
@@ -84,13 +84,13 @@ async def main():
               limit = 100
             if status == 'FREE' and limit > 3000:
 
-              resp = f"""
+              resp = """
 𝗙𝗥𝗘𝗘 𝗨𝗦𝗘𝗥 𝗔𝗥𝗘 𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗧𝗢 𝟯𝟬𝟬𝟬 𝗦𝗖𝗥𝗔𝗣𝗜𝗡𝗚 𝗟𝗜𝗠𝗜𝗧 ❌
                 """
               await message.reply_text(resp, message.id)
             elif status == 'PREMIUM' and limit > 6000:
 
-              resp = f"""
+              resp = """
 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗨𝗦𝗘𝗥 𝗔𝗥𝗘 𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗧𝗢 𝟲𝟬𝟬𝟬 𝗦𝗖𝗥𝗔𝗣𝗜𝗡𝗚 𝗟𝗜𝗠𝗜𝗧 ❌
                 """
               await message.reply_text(resp, message.id)
@@ -107,10 +107,7 @@ async def main():
                   dublicate = 0
                   async for msg in user.get_chat_history(channel_id, limit):
                     all_history = str(msg.text)
-                    if all_history == 'None':
-                      all_history = "INVALID CC NUMBER BC"
-                    else:
-                      all_history = all_history
+                    all_history = "INVALID CC NUMBER BC" if all_history == 'None' else all_history
                     all_cards = all_history.split('\n')
                     cards = []
                     for x in all_cards:
@@ -180,10 +177,7 @@ async def main():
                       async for msg in user.get_chat_history(
                           channel_id, limit):
                         all_history = str(msg.text)
-                        if all_history == 'None':
-                          all_history = "INVALID CC NUMBER BC"
-                        else:
-                          all_history = all_history
+                        all_history = "INVALID CC NUMBER BC" if all_history == 'None' else all_history
                         all_cards = all_history.split('\n')
                         cards = []
                         for x in all_cards:
@@ -254,10 +248,7 @@ async def main():
                   dublicate = 0
                   async for msg in user.get_chat_history(channel_link, limit):
                     all_history = str(msg.text)
-                    if all_history == 'None':
-                      all_history = "INVALID CC NUMBER BC"
-                    else:
-                      all_history = all_history
+                    all_history = "INVALID CC NUMBER BC" if all_history == 'None' else all_history
                     all_cards = all_history.split('\n')
                     cards = []
                     for x in all_cards:

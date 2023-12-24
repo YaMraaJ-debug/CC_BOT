@@ -53,8 +53,6 @@ Result - {response}
       response = "Fraudulent 🚫"
     elif "lock_timeout" in result:
       response = "Api Error 🚫"
-    elif "Your card was declined." in result:
-      response = "Generic Decline 🚫"
     elif "intent_confirmation_challenge" in result:
       response = "Captcha 😥"
     elif "stripe_3ds2_fingerprint" in result:
@@ -65,10 +63,10 @@ Result - {response}
       response = "404 error 🚫"
     elif "invalid_request_error" in result:
       response = "404 error 🚫"
-  
+
     else:
       response = "Proxy Error 🚫"
-  
+
     return (f"<code>{cc}|{mes}|{ano}|{cvv}</code>\n<b>Result - {response}</b>\n")
   except Exception as e:
       print(e)

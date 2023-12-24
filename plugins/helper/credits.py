@@ -7,15 +7,15 @@ async def cmd_credit(Client,message):
   try:
     user_id = str(message.from_user.id)
     regdata = fetchinfo(user_id)
-    credit = regdata[5]
-    status = regdata[2]
-    plan = regdata[3]
     results = str(regdata)
-    first_name = str(message.from_user.first_name)
     if results=='None':
       resp = "𝗬𝗢𝗨 𝗔𝗥𝗘 𝗡𝗢𝗧 𝗥𝗘𝗚𝗜𝗦𝗧𝗘𝗥𝗘𝗗 𝗬𝗘𝗧 ⚠️. 𝗥𝗘𝗚𝗜𝗦𝗧𝗘𝗥 𝗙𝗜𝗥𝗦𝗧 𝗕𝗬 𝗨𝗦𝗜𝗡𝗚 /register 𝗧𝗢 𝗨𝗦𝗘 𝗠𝗘."
       await message.reply_text(resp,message.id)
     else:
+      credit = regdata[5]
+      status = regdata[2]
+      plan = regdata[3]
+      first_name = str(message.from_user.first_name)
       resp = f"""
 𝗡𝗮𝗺𝗲: {first_name}
 𝗖𝗿𝗲𝗱𝗶𝘁: {credit}

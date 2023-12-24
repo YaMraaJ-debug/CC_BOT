@@ -53,7 +53,7 @@ def getallgc():
   import sqlite3
   conn = sqlite3.connect('plugins/xcc_db/giftcard.db')
   db = conn.cursor()
-  db.execute(f"SELECT * FROM gc")
+  db.execute("SELECT * FROM gc")
   info = db.fetchall()
   conn.commit()
   conn.close()

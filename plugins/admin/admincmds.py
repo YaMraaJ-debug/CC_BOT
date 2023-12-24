@@ -3,11 +3,11 @@ from pyrogram import Client, filters
 async def cmd_adm(Client,message):
   user_id = str(message.from_user.id)
   CEO = "6691393517"
-  if user_id != CEO :
+  if user_id != CEO:
     resp = "𝗥𝗲𝗾𝘂𝗶𝗿𝗲 𝗢𝘄𝗻𝗲𝗿 𝗣𝗿𝗶𝘃𝗶𝗹𝗮𝗴𝗲𝘀 ⚠️"
     msg1 = await message.reply_text(resp,message.id)
   else:
-    resp = f"""
+    resp = """
 𝗫 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ⚡ 𝗔𝗗𝗠𝗜𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 -
 
 ● 𝗔𝗨𝗧𝗛 𝗔 𝗚𝗥𝗢𝗨𝗣 𝗖𝗠𝗗

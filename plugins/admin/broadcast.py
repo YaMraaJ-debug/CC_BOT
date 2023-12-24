@@ -4,14 +4,14 @@ from plugins.func.users_sql import *
 async def cmd_brod(Client,message):
   user_id = str(message.from_user.id)
   CEO = "6691393517"
-  owner = 6691393517
-  if user_id != CEO :
+  if user_id != CEO:
     resp = "𝗥𝗲𝗾𝘂𝗶𝗿𝗲 𝗢𝘄𝗻𝗲𝗿 𝗣𝗿𝗶𝘃𝗶𝗹𝗮𝗴𝗲𝘀 ⚠️"
     msg1 = await message.reply_text(resp,message.id)
   else:
     resp = "HI ALL"
     filter_user = "users"
     get_all_user = getalldata(filter_user)
+    owner = 6691393517
     try:
       for item in get_all_user:
         chat_id = int(item[0])
