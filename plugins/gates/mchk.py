@@ -26,10 +26,10 @@ async def cmd_mchk(Client,message):
       status = pm[2]
       role = status
       GROUP = open("plugins/group.txt").read().splitlines()
-      if chat_type=="ChatType.PRIVATE" and status=="FREE" :
+      if chat_type == "ChatType.PRIVATE" and role == "FREE":
         resp = "𝗢𝗡𝗟𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 𝗔𝗥𝗘 𝗔𝗟𝗟𝗢𝗪𝗘𝗗 𝗧𝗢 𝗨𝗦𝗘 𝗕𝗢𝗧 𝗜𝗡 𝗣𝗘𝗥𝗦𝗢𝗡𝗔𝗟 ⚠️."
         await message.reply_text(resp,message.id)
-      
+
       elif chat_type=="ChatType.GROUP" or   chat_type=="ChatType.SUPERGROUP" and chat_id not in GROUP:
         resp = "𝗨𝗡𝗔𝗨𝗧𝗛𝗢𝗥𝗜𝗭𝗘𝗗 𝗖𝗛𝗔𝗧 ❌. 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 @daxxsir 𝗧𝗢 𝗔𝗨𝗧𝗛𝗢𝗥𝗜𝗭𝗘."
         await message.reply_text(resp,message.id)
@@ -62,79 +62,72 @@ async def cmd_mchk(Client,message):
 𝗧𝗥𝗬 𝗔𝗚𝗔𝗜𝗡 𝗔𝗙𝗧𝗘𝗥 {after} 𝗦𝗘𝗖𝗢𝗡𝗗𝗦
             """
             await message.reply_text(resp,message.id)
+          elif message.reply_to_message:
+            all_cards = message.reply_to_message.text
+
           else:
-            if message.reply_to_message:
-              all_cards = message.reply_to_message.text
-          
+            all_cards = message.text.split('\n')
+            stresp = "𝗦𝗧𝗔𝗥𝗧𝗘𝗗 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚.."
+            stchk=  await message.reply_text(stresp,message.id)
+            len_cards = len(all_cards)
+            if len(all_cards) > 6 and role=="FREE":
+              resp = "𝗦𝗢𝗥𝗥𝗬 𝗙𝗥𝗘𝗘 𝗨𝗦𝗘𝗥 𝗔𝗥𝗘 𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗧𝗢 5 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞 𝗟𝗜𝗠𝗜𝗧 ❌"
+              free = await Client.edit_message_text(message.chat.id,stchk.id,resp)
+
+            elif len(all_cards) > 11 and role=="PREMIUM":
+              resp = "𝗦𝗢𝗥𝗥𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 𝗛𝗔𝗦 10 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞 𝗟𝗜𝗠𝗜𝗧 ❌"
+              PREMIUM = await Client.edit_message_text(message.chat.id,stchk.id,resp)
             else:
-              all_cards = message.text.split('\n')
-              stresp = "𝗦𝗧𝗔𝗥𝗧𝗘𝗗 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚.."
-              stchk=  await message.reply_text(stresp,message.id)
-              len_cards = len(all_cards)
-              if len(all_cards) > 6 and role=="FREE":
-                resp = "𝗦𝗢𝗥𝗥𝗬 𝗙𝗥𝗘𝗘 𝗨𝗦𝗘𝗥 𝗔𝗥𝗘 𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗧𝗢 5 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞 𝗟𝗜𝗠𝗜𝗧 ❌"
-                free = await Client.edit_message_text(message.chat.id,stchk.id,resp)
-          
-              elif len(all_cards) > 11 and role=="PREMIUM":
-                resp = "𝗦𝗢𝗥𝗥𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 𝗛𝗔𝗦 10 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞 𝗟𝗜𝗠𝗜𝗧 ❌"
-                PREMIUM = await Client.edit_message_text(message.chat.id,stchk.id,resp)
-              else:
-                resp = "𝗚𝗘𝗧𝗧𝗜𝗡𝗚 𝗩𝗔𝗟𝗜𝗗 𝗜𝗡𝗣𝗨𝗧..."
-                okst = await Client.edit_message_text(message.chat.id,stchk.id,resp)
-                cards = []
-                for x in all_cards:
-                  input = re.findall(r"[0-9]+", x)
-                  if not input or len(input) < 3:
-                    continue
-                  if len(input) == 3:
-                    cc = input[0]
-                    if len(input[1]) == 3:
-                      mes = input[2][:2]
-                      ano = input[2][2:]
-                      cvv = input[1]
-                    else:
-                     mes = input[1][:2]
-                     ano = input[1][2:]
-                     cvv = input[2]
+              resp = "𝗚𝗘𝗧𝗧𝗜𝗡𝗚 𝗩𝗔𝗟𝗜𝗗 𝗜𝗡𝗣𝗨𝗧..."
+              okst = await Client.edit_message_text(message.chat.id,stchk.id,resp)
+              cards = []
+              for x in all_cards:
+                input = re.findall(r"[0-9]+", x)
+                if not input or len(input) < 3:
+                  continue
+                if len(input) == 3:
+                  if len(input[1]) == 3:
+                    mes = input[2][:2]
+                    ano = input[2][2:]
+                    cvv = input[1]
                   else:
-                    cc = input[0]
-                    if len(input[1]) == 3:
-                      mes = input[2]
-                      ano = input[3]
-                      cvv = input[1]
-                    else:
-                      mes = input[1]
-                      ano = input[2]
-                      cvv = input[3]
-                    if len(mes) == 2 and (mes > '12' or mes < '01'):
-                      ano1 = mes
-                      mes = ano
-                      ano = ano1
-                  if (cc, mes, ano, cvv):
-                    cards.append([cc, mes, ano, cvv])
-                  else:
-                   continue
-                len_cards = len(cards)
-                if not len_cards:
-                  resp = "𝗡𝗢𝗧 𝗙𝗢𝗨𝗡𝗗 𝗔𝗡𝗬 𝗩𝗔𝗟𝗜𝗗 𝗖𝗔𝗥𝗗"
-                  nov =  await Client.edit_message_text(message.chat.id,okst.id,resp)
+                   mes = input[1][:2]
+                   ano = input[1][2:]
+                   cvv = input[2]
                 else:
-                  resp = f"𝗜 𝗝𝗨𝗦𝗧 𝗙𝗢𝗨𝗡𝗗 {len_cards} 𝗖𝗔𝗥𝗗 𝗙𝗥𝗢𝗠 𝗬𝗢𝗨𝗥 𝗜𝗡𝗣𝗨𝗧.𝗜 𝗔𝗠 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚..."
-                  nov =  await Client.edit_message_text(message.chat.id,okst.id,resp)
-                  
-                  text = f"""
+                  if len(input[1]) == 3:
+                    mes = input[2]
+                    ano = input[3]
+                    cvv = input[1]
+                  else:
+                    mes = input[1]
+                    ano = input[2]
+                    cvv = input[3]
+                  if len(mes) == 2 and (mes > '12' or mes < '01'):
+                    mes, ano = ano, mes
+                cc = input[0]
+                cards.append([cc, mes, ano, cvv])
+              len_cards = len(cards)
+              if not len_cards:
+                resp = "𝗡𝗢𝗧 𝗙𝗢𝗨𝗡𝗗 𝗔𝗡𝗬 𝗩𝗔𝗟𝗜𝗗 𝗖𝗔𝗥𝗗"
+                nov =  await Client.edit_message_text(message.chat.id,okst.id,resp)
+              else:
+                resp = f"𝗜 𝗝𝗨𝗦𝗧 𝗙𝗢𝗨𝗡𝗗 {len_cards} 𝗖𝗔𝗥𝗗 𝗙𝗥𝗢𝗠 𝗬𝗢𝗨𝗥 𝗜𝗡𝗣𝗨𝗧.𝗜 𝗔𝗠 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚..."
+                nov =  await Client.edit_message_text(message.chat.id,okst.id,resp)
+
+                text = f"""
 <b>↯ MASS CHARGE</b> \n
   """
-                  r = requests.Session()
-                  for inp in cards:
-                    time.sleep(0.5)
-                    with concurrent.futures.ThreadPoolExecutor() as executor:
-                      future = executor.submit(charge_func, r, inp[0], inp[3], inp[1], inp[2])
-                      return_value = future.result()
-                      text += return_value
-                      done = await Client.edit_message_text(message.chat.id,nov.id,text)
-          
-                  text += f"""
+                r = requests.Session()
+                for inp in cards:
+                  time.sleep(0.5)
+                  with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(charge_func, r, inp[0], inp[3], inp[1], inp[2])
+                    return_value = future.result()
+                    text += return_value
+                    done = await Client.edit_message_text(message.chat.id,nov.id,text)
+
+                text += f"""
 <b>－－－－－－－－－－－－－－－－
 [ CHECK INFO ]
 ⌧ Proxy  - Live! 🌐 
@@ -144,18 +137,18 @@ async def cmd_mchk(Client,message):
 ⌧ Client by - <a href="tg://user?id=6691393517">𝐌𝚁°᭄𝐃𝙰𝚇𝚇 ࿐™ </a>
 －－－－－－－－－－－－－－－－</b>
           """
-                  await Client.edit_message_text(message.chat.id,nov.id,text)
-                  #ANTISPAM TIME SET
-                  module_name = "antispam_time"
-                  value = int(time.time())
-                  updatedata(user_id,module_name,value)
-                  #CREDIT DEDUCT SECTION
-                  fetch= fetchinfo(user_id)
-                  credit = int(fetch[5])
-                  module_name = "credit"
-                  amt = len_cards * 1
-                  deduct = credit - amt
-                  value = deduct
-                  updatedata(user_id,module_name,value)
+                await Client.edit_message_text(message.chat.id,nov.id,text)
+                #ANTISPAM TIME SET
+                module_name = "antispam_time"
+                value = int(time.time())
+                updatedata(user_id,module_name,value)
+                #CREDIT DEDUCT SECTION
+                fetch= fetchinfo(user_id)
+                credit = int(fetch[5])
+                module_name = "credit"
+                amt = len_cards * 1
+                deduct = credit - amt
+                value = deduct
+                updatedata(user_id,module_name,value)
   except Exception as e:
       print(e)

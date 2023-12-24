@@ -6,8 +6,8 @@ async def cmd_buy(Client,message):
     user_id = str(message.from_user.id)
     chat_type = str(message.chat.type)
     chat_id = str(message.chat.id)
-    #PLAN CHECK 
-    resp =f"""
+    #PLAN CHECK
+    resp = """
 📝 𝗫 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ⚡ 𝗣𝗹𝗮𝗻𝘀 :
 ━━━━━━━━━━━━━━
 

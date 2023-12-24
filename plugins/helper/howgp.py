@@ -7,8 +7,8 @@ async def cmd_howgp(Client,message):
     chat_type = str(message.chat.type)
     chat_id = str(message.chat.id)
     #PLAN CHECK 
-    
-    texta = f"""
+
+    texta = """
 𝗧𝗢 𝗔𝗗𝗗 𝗧𝗛𝗜𝗦 𝗕𝗢𝗧 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 -
 
 ⚠️⚠️ 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 𝗠𝗨𝗦𝗧 𝗕𝗘 𝗔𝗧𝗟𝗘𝗔𝗦𝗧 100+ 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 ⚠️⚠️

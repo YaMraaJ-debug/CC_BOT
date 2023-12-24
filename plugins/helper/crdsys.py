@@ -6,8 +6,8 @@ async def cmd_crdsystem(Client,message):
     user_id = str(message.from_user.id)
     chat_type = str(message.chat.type)
     chat_id = str(message.chat.id)
-    #PLAN CHECK 
-    resp =f"""
+    #PLAN CHECK
+    resp = """
 𝗫 𝗖𝗖 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ⚡𝗖𝗥𝗘𝗗𝗜𝗧 𝗦𝗬𝗦𝗧𝗘𝗠 -
 
 ● 𝗔𝗨𝗧𝗛 𝗚𝗔𝗧𝗘𝗦

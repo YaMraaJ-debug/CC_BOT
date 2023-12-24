@@ -13,10 +13,10 @@ async def cmd_info(Client,message):
       await message.reply_text(resp,message.id)
     else:
       
+      chat_type = str(message.chat.type)
+      chat_id = str(message.chat.id)
       if message.reply_to_message:
         user_id = str(message.reply_to_message.from_user.id)
-        chat_type = str(message.chat.type)
-        chat_id = str(message.chat.id)
         #PLAN CHECK 
         await plan_expirychk(user_id)
         user_id = str(message.reply_to_message.from_user.id)
@@ -42,7 +42,6 @@ async def cmd_info(Client,message):
 ● 𝗞𝗲𝘆 𝗥𝗲𝗱𝗲𝗲𝗺𝗲𝗱 : N/A
 ● 𝗥𝗲𝗴𝗶𝘀𝘁𝗲𝗿𝗲𝗱 𝗮𝘁: N/A
 """
-          await message.reply_text(send_info,message.id)
         else:
           pid = str(message.reply_to_message.from_user.id)
           await plan_expirychk(pid)
@@ -73,11 +72,8 @@ async def cmd_info(Client,message):
 ● 𝗞𝗲𝘆 𝗥𝗲𝗱𝗲𝗲𝗺𝗲𝗱 : {totalkey}
 ● 𝗥𝗲𝗴𝗶𝘀𝘁𝗲𝗿𝗲𝗱 𝗮𝘁: {reg_at}
 """
-          await message.reply_text(send_info,message.id)
       else:
         user_id = str(message.from_user.id)
-        chat_type = str(message.chat.type)
-        chat_id = str(message.chat.id)
         #PLAN CHECK 
         await plan_expirychk(user_id)
         user_id = str(message.from_user.id)
@@ -134,6 +130,6 @@ async def cmd_info(Client,message):
 ● 𝗞𝗲𝘆 𝗥𝗲𝗱𝗲𝗲𝗺𝗲𝗱 : {totalkey}
 ● 𝗥𝗲𝗴𝗶𝘀𝘁𝗲𝗿𝗲𝗱 𝗮𝘁: {reg_at}
   """
-        await message.reply_text(send_info,message.id)
+      await message.reply_text(send_info,message.id)
   except Exception as e:
       print(e)

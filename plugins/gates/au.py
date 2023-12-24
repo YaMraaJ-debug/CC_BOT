@@ -16,7 +16,7 @@ async def cmd_au(Client,message):
     chat_type = str(message.chat.type)
     chat_id = str(message.chat.id)
     #PLAN CHECK 
-    
+
     regdata = fetchinfo(user_id)
     results = str(regdata)
     if results=='None':
@@ -29,10 +29,10 @@ async def cmd_au(Client,message):
       status = pm[2]
       role = status
       GROUP = open("plugins/group.txt").read().splitlines()
-      if chat_type=="ChatType.PRIVATE" and status=="FREE" :
+      if chat_type=="ChatType.PRIVATE" and status=="FREE":
         resp = "𝗢𝗡𝗟𝗬 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗘𝗠𝗕𝗘𝗥𝗦 𝗔𝗥𝗘 𝗔𝗟𝗟𝗢𝗪𝗘𝗗 𝗧𝗢 𝗨𝗦𝗘 𝗕𝗢𝗧 𝗜𝗡 𝗣𝗘𝗥𝗦𝗢𝗡𝗔𝗟 ⚠️.𝗬𝗢𝗨 𝗖𝗔𝗡 𝗨𝗦𝗘 𝗙𝗥𝗘𝗘𝗟𝗬 𝗕𝗢𝗧 𝗛𝗘𝗥𝗘 @daxxsir"
         await message.reply_text(resp,message.id)
-      
+
       elif chat_type=="ChatType.GROUP" or   chat_type=="ChatType.SUPERGROUP" and chat_id not in GROUP:
         resp = "𝗨𝗡𝗔𝗨𝗧𝗛𝗢𝗥𝗜𝗭𝗘𝗗 𝗖𝗛𝗔𝗧 ❌. 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 @daxxsir 𝗧𝗢 𝗔𝗨𝗧𝗛𝗢𝗥𝗜𝗭𝗘."
         await message.reply_text(resp,message.id)
@@ -65,11 +65,11 @@ async def cmd_au(Client,message):
 𝗧𝗥𝗬 𝗔𝗚𝗔𝗜𝗡 𝗔𝗙𝗧𝗘𝗥 {after} 𝗦𝗘𝗖𝗢𝗡𝗗𝗦
             """
             await message.reply_text(resp,message.id)
-          
+
           else:
             if message.reply_to_message:
               cc = message.reply_to_message.text
-          
+
             else:
               cc = message.text[len('/au '):]
             if len(cc) == 0:
@@ -77,9 +77,8 @@ async def cmd_au(Client,message):
 𝗚𝗜𝗩𝗘 𝗠𝗘 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗖𝗖 𝗧𝗢 𝗖𝗛𝗘𝗖𝗞 ⚠️
               """
                 return await message.reply_text(nocc,message.id) 
-              
-              
-            cards = []
+
+
             x = cc
             input = re.findall(r"[0-9]+", x)
             if not input or len(input) < 3:
@@ -87,7 +86,7 @@ async def cmd_au(Client,message):
 𝗚𝗜𝗩𝗘 𝗠𝗘 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗖𝗖 𝗧𝗢 𝗖𝗛𝗘𝗖𝗞 ⚠️
               """
                 return await message.reply_text(nocc,message.id) 
-              
+
             if len(input) == 3:
               cc = input[0]
               if len(input[1]) == 3:
@@ -109,13 +108,8 @@ async def cmd_au(Client,message):
                 ano = input[2]
                 cvv = input[3]
               if len(mes) == 2 and (mes > '12' or mes < '01'):
-                ano1 = mes
-                mes = ano
-                ano = ano1
-              
-          
-              if (cc, mes, ano, cvv):
-                cards.append([cc, mes, ano, cvv])
+                mes, ano = ano, mes
+              cards = [[cc, mes, ano, cvv]]
               fullcc = f"{cc}|{mes}|{ano}|{cvv}"
               firstresp = f"""
 <b>↯ AUTH 
@@ -126,7 +120,7 @@ async def cmd_au(Client,message):
 ⊗ GATEWAY- Stripe Auth
 </b>
               """
-              
+
               firstchk = await message.reply_text(firstresp,message.id)
               secondresp = f"""
 <b>↯ AUTH 
@@ -166,7 +160,7 @@ async def cmd_au(Client,message):
               fourthchk = await Client.edit_message_text(message.chat.id,thirdchk.id,fourthresp)
             #BIN RESPINSE
               fbin = cc[:6]
-              
+
               bin = session.get(f"https://lookup.binlist.net/{fbin}").json()
               try:
                 brand = bin["scheme"].upper()
@@ -286,13 +280,13 @@ async def cmd_au(Client,message):
               elif "invalid_request_error" in result:
                 status = "Dead 🔴"
                 response = "404 error 🚫"
-            
+
               else:
                 status = "Dead 🔴"
                 response = "Generic Decline 🚫"
-              
+
           #--------------FINAL RESPONSE ------------#
-              
+
               finalresp = f"""
 <b>↯ AUTH 
 
@@ -314,13 +308,13 @@ async def cmd_au(Client,message):
 ⌧ Client by - <a href="tg://user?id=6691393517">𝐌𝚁°᭄𝐃𝙰𝚇𝚇 ࿐™ </a>
 －－－－－－－－－－－－－－－－</b>
             """
-            
+
               finalchk = await Client.edit_message_text(message.chat.id,sixchk.id,finalresp)
               #ANTISPAM TIME SET
               module_name = "antispam_time"
               value = int(time.time())
               updatedata(user_id,module_name,value)
-              
+
               fetch= fetchinfo(user_id)
               credit = int(fetch[5])
               module_name = "credit"
